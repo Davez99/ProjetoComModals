@@ -22,20 +22,55 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SalarioUser)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reajuste)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SalarioUser)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reajuste)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+@section scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.all.min.js"></script>
+
+
+    <script>
+        var strValue = "@((string)ViewBag.mssgC)";
+        if (strValue !== null && strValue !== '') {
+            Swal.fire(
+                strValue,
+               '',
+                'success'
+            )
+        }
+
+        var strValue = "@((string)ViewBag.mssgE)";
+        if (strValue !== null && strValue !== '') {
+            Swal.fire(
+                strValue,
+               '',
+                'success'
+            )
+        }
+
+        var strValue = "@((string)ViewBag.mssgD)";
+        if (strValue !== null && strValue !== '') {
+            Swal.fire(
+                strValue,
+               '',
+                'success'
+            )
+        }
+    </script>
+
+}

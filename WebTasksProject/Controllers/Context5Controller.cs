@@ -24,6 +24,11 @@ namespace WebTasksProject.Controllers
         // GET: Context5
         public async Task<IActionResult> Index()
         {
+            //Comunicação com a Modal
+            ViewBag.mssgC = TempData["mssgC"] as string;
+            ViewBag.mssgE = TempData["mssgE"] as string;
+            ViewBag.mssgD = TempData["mssgD"] as string;
+
             return View(await _context.Exec5.ToListAsync());
         }
 
@@ -64,6 +69,10 @@ namespace WebTasksProject.Controllers
             {
                 _context.Add(exec5);
                 await _context.SaveChangesAsync();
+
+                //Comunicação com a Modal
+                TempData["mssgC"] = "Sucesso!";
+
                 return RedirectToAction(nameof(Index));
             }
             return View(exec5);
@@ -104,6 +113,10 @@ namespace WebTasksProject.Controllers
                 try
                 {
                     _context.Update(exec5);
+
+                    //Comunicação com a Modal
+                    TempData["mssgE"] = "Editado!";
+
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -147,6 +160,10 @@ namespace WebTasksProject.Controllers
         {
             var exec5 = await _context.Exec5.FindAsync(id);
             _context.Exec5.Remove(exec5);
+
+            //Comunicação com a Modal
+            TempData["mssgD"] = "Excluído!";
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

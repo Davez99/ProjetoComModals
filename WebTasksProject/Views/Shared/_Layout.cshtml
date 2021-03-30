@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Exercícios ETEC</title>
+    <link rel="stylesheet" type="text/css" href="dist/sweetalert2.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -19,7 +20,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebTasks1a9NewProject</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Desafio ETEC</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -37,8 +38,6 @@
         @RenderBody()
         <section class="page-section portfolio" id="portfolio">
             <div class="container">
-                <!-- Portfolio Section Heading-->
-                <!-- Icon Divider-->
                 <!-- Portfolio Grid Items-->
                 <div class="row justify-content-center">
                     <!-- Exercícios 1 -->
@@ -457,7 +456,7 @@
         </div>
         <footer>
             <div>
-               <!--Footer area-->
+                <!--Footer area-->
             </div>
         </footer>
         <!-- Bootstrap core JS-->
@@ -470,6 +469,7 @@
         <script src="assets/mail/contact_me.js"></script>
         <!-- Core theme JS-->
         <script src="~/js/scripts.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         @RenderSection("Scripts", required: false)
     </div>
 </body>

@@ -25,6 +25,11 @@ namespace WebTasksProject.Controllers
         // GET: Context9
         public async Task<IActionResult> Index()
         {
+            //Comunicação com a Modal
+            ViewBag.mssgC = TempData["mssgC"] as string;
+            ViewBag.mssgE = TempData["mssgE"] as string;
+            ViewBag.mssgD = TempData["mssgD"] as string;
+
             return View(await _context.Exec9.ToListAsync());
         }
 
@@ -108,7 +113,7 @@ namespace WebTasksProject.Controllers
             exec9.AvisoUser = "Documento Criado!";
 
             //Leitor do conteúdo que esta dentro do arquivo de texto
-            string Leitura = System.IO.File.ReadAllText("..\\WebTasks1a9NewProject\\Exercicio9.txt");
+            string Leitura = System.IO.File.ReadAllText("..\\WebTasksProject\\Exercicio9.txt");
 
             exec9.ConteudoUser = Leitura;
 
@@ -116,6 +121,10 @@ namespace WebTasksProject.Controllers
             {
                 _context.Add(exec9);
                 await _context.SaveChangesAsync();
+
+                //Comunicação com a Modal
+                TempData["mssgC"] = "Sucesso!";
+
                 return RedirectToAction(nameof(Index));
             }
             return View(exec9);
@@ -198,7 +207,7 @@ namespace WebTasksProject.Controllers
             exec9.AvisoUser = "Documento Criado!";
 
             //Leitor do conteúdo que esta dentro do arquivo de texto
-            string Leitura = System.IO.File.ReadAllText("..\\WbEx1a9\\Exercicio9.txt");
+            string Leitura = System.IO.File.ReadAllText("..\\WebTasksProject\\Exercicio9.txt");
 
             exec9.ConteudoUser = Leitura;
 
@@ -207,6 +216,10 @@ namespace WebTasksProject.Controllers
                 try
                 {
                     _context.Update(exec9);
+
+                    //Comunicação com a Modal
+                    TempData["mssgE"] = "Editado!";
+
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -250,6 +263,10 @@ namespace WebTasksProject.Controllers
         {
             var exec9 = await _context.Exec9.FindAsync(id);
             _context.Exec9.Remove(exec9);
+
+            //Comunicação com a Modal
+            TempData["mssgD"] = "Excluído!";
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
